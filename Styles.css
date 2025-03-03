@@ -32,11 +32,9 @@ p {
   margin-top: 10px;
 }
 
-/* Mood selection section */
 .mood-buttons {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
 }
@@ -57,27 +55,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-button.selected {
-  animation: pulse 0.5s;
-  box-shadow: 0 0 15px #ff6b6b;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-.random-button {
-  margin-top: 15px;
-  background-color: #9c27b0; /* Purple for random button */
-}
-
-.random-button:hover {
-  background-color: #ba68c8; /* Lighter purple on hover */
-}
-
-/* Recommendations section */
 #recommendations {
   margin: 20px;
   padding: 20px;
@@ -98,7 +75,6 @@ button.selected {
   position: relative;
   margin: 0 auto;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .liquid {
@@ -107,7 +83,7 @@ button.selected {
   background-color: #e94560; /* Magical red for the liquid */
   position: absolute;
   bottom: 0;
-  transition: height 1s ease-in-out, background-color 1s ease-in-out;
+  transition: height 1s ease-in-out;
 }
 
 #music-list {
@@ -121,56 +97,9 @@ button.selected {
   color: #e0e0e0;
 }
 
-/* History section */
-#history {
-  margin: 20px;
-  padding: 20px;
-  background-color: #16213e; /* Deep blue */
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#history-list {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-#history-list li {
-  background-color: #0f3460;
-  padding: 8px 15px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-#history-list li:hover {
-  background-color: #e94560;
-  transform: scale(1.05);
-}
-
 footer {
   margin-top: 40px;
   padding: 10px;
   background-color: #16213e; /* Deep blue */
   color: white;
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-  .mood-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  button {
-    width: 80%;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
 }
