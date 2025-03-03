@@ -1,0 +1,176 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a2e; /* Dark magical background */
+  color: #e0e0e0; /* Light text for contrast */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background-color: #16213e; /* Deep blue */
+  color: #e0e0e0;
+  padding: 20px;
+  position: relative;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #e94560; /* Magical red */
+}
+
+p {
+  margin: 5px 0;
+  color: #e0e0e0;
+}
+
+.potion-icon {
+  font-size: 3rem;
+  color: #0f3460; /* Darker blue for the potion icon */
+  margin-top: 10px;
+}
+
+/* Mood selection section */
+.mood-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #e94560; /* Magical red */
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #ff6b6b; /* Lighter red on hover */
+  transform: scale(1.05);
+}
+
+button.selected {
+  animation: pulse 0.5s;
+  box-shadow: 0 0 15px #ff6b6b;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.random-button {
+  margin-top: 15px;
+  background-color: #9c27b0; /* Purple for random button */
+}
+
+.random-button:hover {
+  background-color: #ba68c8; /* Lighter purple on hover */
+}
+
+/* Recommendations section */
+#recommendations {
+  margin: 20px;
+  padding: 20px;
+  background-color: #16213e; /* Deep blue */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#potion-animation {
+  margin: 20px 0;
+}
+
+.potion-bottle {
+  width: 100px;
+  height: 200px;
+  background-color: #0f3460; /* Darker blue for the bottle */
+  border-radius: 10px 10px 50px 50px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.liquid {
+  width: 100%;
+  height: 0;
+  background-color: #e94560; /* Magical red for the liquid */
+  position: absolute;
+  bottom: 0;
+  transition: height 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+#music-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#music-list li {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+/* History section */
+#history {
+  margin: 20px;
+  padding: 20px;
+  background-color: #16213e; /* Deep blue */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#history-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#history-list li {
+  background-color: #0f3460;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+#history-list li:hover {
+  background-color: #e94560;
+  transform: scale(1.05);
+}
+
+footer {
+  margin-top: 40px;
+  padding: 10px;
+  background-color: #16213e; /* Deep blue */
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .mood-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    width: 80%;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
