@@ -16,7 +16,7 @@ const moodData = {
       { name: "everything i wanted - Billie Eilish", link: "https://www.youtube.com/watch?v=EgBJmlPo8Xw" }
     ],
     activity: "Write down three things you're grateful for. 📝",
-    color: "#6495ED" // Brightened Steel Blue for better contrast
+    color: "#4682B4" // Steel Blue
   },
   energetic: {
     music: [
@@ -25,7 +25,7 @@ const moodData = {
       { name: "Stronger - Kanye West", link: "https://www.youtube.com/watch?v=PsO6ZnUZI0g" }
     ],
     activity: "Do a quick 10-minute workout! 🏋️",
-    color: "#FF6347" // Brightened Orange Red for better contrast
+    color: "#FF4500" // Orange Red
   },
   relaxed: {
     music: [
@@ -34,7 +34,7 @@ const moodData = {
       { name: "Three Little Birds - Bob Marley", link: "https://www.youtube.com/watch?v=zaGUr6wzyT8" }
     ],
     activity: "Try a 5-minute meditation session. 🧘",
-    color: "#8A7BFF" // Brightened Medium Slate Blue for better contrast
+    color: "#7B68EE" // Medium Slate Blue
   }
 };
 
@@ -45,8 +45,6 @@ const activityText = document.getElementById("activity-text");
 const liquid = document.querySelector(".liquid");
 const potionTitle = document.querySelector("#potion-title");
 const historyList = document.getElementById("history-list");
-const potionBottle = document.querySelector(".potion-bottle");
-const particlesContainer = document.querySelector(".particles-container");
 
 let history = [];
 
@@ -85,26 +83,8 @@ function mixPotion(mood) {
   // Animate the liquid in the potion bottle with mood color
   liquid.style.backgroundColor = data.color;
   liquid.style.height = "100%";
-  
-  // Reset the position of bubbles for new animation
-  resetBubbles();
-  
-  // After a delay, show the completion effects
   setTimeout(() => {
     liquid.style.height = "80%";
-    
-    // Add a glow effect to the bottle
-    potionBottle.style.setProperty('--potion-color', data.color);
-    potionBottle.classList.add('potion-complete');
-    
-    // Create magical particles
-    createParticles(data.color);
-    
-    // Remove glow effect after animation completes
-    setTimeout(() => {
-      potionBottle.classList.remove('potion-complete');
-    }, 2000);
-    
   }, 1000);
 
   // Add to history
@@ -122,14 +102,14 @@ function mixPotion(mood) {
       link.href = song.link;
       link.target = "_blank";
       link.textContent = song.name;
-      link.style.color = "#ff5a76"; // Updated for better contrast
+      link.style.color = "#e94560";
       link.style.textDecoration = "none";
       link.style.transition = "color 0.3s";
       link.addEventListener("mouseover", () => {
-        link.style.color = "#ff8c98";
+        link.style.color = "#ff6b6b";
       });
       link.addEventListener("mouseout", () => {
-        link.style.color = "#ff5a76";
+        link.style.color = "#e94560";
       });
       li.appendChild(link);
       musicList.appendChild(li);
@@ -138,65 +118,6 @@ function mixPotion(mood) {
     // Display activity suggestion
     activityText.textContent = data.activity;
   }, 1000);
-}
-
-// Function to create particles
-function createParticles(color) {
-  // Clear any existing particles
-  particlesContainer.innerHTML = '';
-  
-  // Create new particles
-  const particleCount = 25;
-  
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Random size
-    const size = Math.random() * 8 + 2;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    
-    // Random starting position
-    const startX = 50 + (Math.random() * 40 - 20);
-    const startY = 100;
-    particle.style.left = `${startX}%`;
-    particle.style.top = `${startY}px`;
-    
-    // Random end position
-    const tx = (Math.random() * 200 - 100);
-    const ty = (Math.random() * -200 - 50);
-    const rotation = Math.random() * 360;
-    
-    // Set custom properties for the animation
-    particle.style.setProperty('--tx', `${tx}px`);
-    particle.style.setProperty('--ty', `${ty}px`);
-    particle.style.setProperty('--r', `${rotation}deg`);
-    
-    // Set color - mix the potion color with some white for sparkle effect
-    particle.style.backgroundColor = color;
-    particle.style.boxShadow = `0 0 ${size}px ${color}`;
-    
-    // Set animation
-    const duration = Math.random() * 2 + 1;
-    const delay = Math.random() * 0.5;
-    particle.style.animation = `float ${duration}s ease-out ${delay}s`;
-    
-    // Add to container
-    particlesContainer.appendChild(particle);
-  }
-}
-
-// Function to reset bubble animations
-function resetBubbles() {
-  const bubbles = document.querySelectorAll('.bubble-1, .bubble-2, .bubble-3');
-  bubbles.forEach(bubble => {
-    // Remove and reattach to restart animation
-    const parent = bubble.parentNode;
-    const clone = bubble.cloneNode(true);
-    parent.removeChild(bubble);
-    parent.appendChild(clone);
-  });
 }
 
 // Function to add mood to history
