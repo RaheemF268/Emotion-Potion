@@ -1,8 +1,8 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #1a1a2e; /* Dark magical background */
-  color: #e0e0e0; /* Light text for contrast */
+  background-color: #121225; /* Darkened background for better contrast */
+  color: #f0f0f0; /* Brightened text for better contrast */
   margin: 0;
   padding: 0;
   text-align: center;
@@ -10,7 +10,7 @@ body {
 
 header {
   background-color: #16213e; /* Deep blue */
-  color: #e0e0e0;
+  color: #f0f0f0;
   padding: 20px;
   position: relative;
 }
@@ -18,17 +18,17 @@ header {
 h1 {
   margin: 0;
   font-size: 2.5rem;
-  color: #e94560; /* Magical red */
+  color: #ff5a76; /* Brightened magical red for better contrast */
 }
 
 p {
   margin: 5px 0;
-  color: #e0e0e0;
+  color: #f0f0f0;
 }
 
 .potion-icon {
   font-size: 3rem;
-  color: #0f3460; /* Darker blue for the potion icon */
+  color: #1a5694; /* Brightened blue for better contrast */
   margin-top: 10px;
 }
 
@@ -47,19 +47,19 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #e94560; /* Magical red */
+  background-color: #ff5a76; /* Brightened magical red */
   color: white;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-  background-color: #ff6b6b; /* Lighter red on hover */
+  background-color: #ff8c98; /* Lighter red on hover */
   transform: scale(1.05);
 }
 
 button.selected {
   animation: pulse 0.5s;
-  box-shadow: 0 0 15px #ff6b6b;
+  box-shadow: 0 0 15px #ff8c98;
 }
 
 @keyframes pulse {
@@ -70,11 +70,11 @@ button.selected {
 
 .random-button {
   margin-top: 15px;
-  background-color: #9c27b0; /* Purple for random button */
+  background-color: #b133c9; /* Brightened purple for better contrast */
 }
 
 .random-button:hover {
-  background-color: #ba68c8; /* Lighter purple on hover */
+  background-color: #cc74dd; /* Lighter purple on hover */
 }
 
 /* Recommendations section */
@@ -88,26 +88,160 @@ button.selected {
 
 #potion-animation {
   margin: 20px 0;
+  position: relative; /* Added for particle positioning */
 }
 
 .potion-bottle {
   width: 100px;
   height: 200px;
-  background-color: #0f3460; /* Darker blue for the bottle */
+  background-color: #1a5694; /* Brightened blue for the bottle */
   border-radius: 10px 10px 50px 50px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 1; /* Ensure bottle is above particles */
 }
 
 .liquid {
   width: 100%;
   height: 0;
-  background-color: #e94560; /* Magical red for the liquid */
+  background-color: #ff5a76; /* Brightened magical red for the liquid */
   position: absolute;
   bottom: 0;
   transition: height 1s ease-in-out, background-color 1s ease-in-out;
+  /* Adding bubbling effect */
+  overflow: hidden;
+}
+
+/* Bubbles for potion effect */
+.liquid::before,
+.liquid::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  bottom: -20px;
+  animation: bubble 2s infinite ease-in-out;
+}
+
+.liquid::before {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 0.5s;
+  animation-duration: 2.5s;
+}
+
+.liquid::after {
+  left: 60%;
+  width: 8px;
+  height: 8px;
+  animation-delay: 0.2s;
+  animation-duration: 1.8s;
+}
+
+/* Additional bubbles */
+.bubble-1, .bubble-2, .bubble-3 {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  bottom: -20px;
+  animation: bubble 3s infinite ease-in-out;
+}
+
+.bubble-1 {
+  left: 35%;
+  width: 12px;
+  height: 12px;
+  animation-delay: 0.7s;
+  animation-duration: 2.2s;
+}
+
+.bubble-2 {
+  left: 75%;
+  width: 10px;
+  height: 10px;
+  animation-delay: 1.2s;
+  animation-duration: 2.7s;
+}
+
+.bubble-3 {
+  left: 15%;
+  width: 6px;
+  height: 6px;
+  animation-delay: 0.3s;
+  animation-duration: 1.5s;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Particle effects container */
+.particles-container {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Individual particles */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Particle animation */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+/* Special glow effect when potion is complete */
+.potion-complete {
+  animation: glow 2s ease-in-out;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--potion-color, #ff5a76);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
 }
 
 #music-list {
@@ -118,7 +252,7 @@ button.selected {
 #music-list li {
   margin: 10px 0;
   font-size: 1.1rem;
-  color: #e0e0e0;
+  color: #f0f0f0;
 }
 
 /* History section */
@@ -140,7 +274,7 @@ button.selected {
 }
 
 #history-list li {
-  background-color: #0f3460;
+  background-color: #1a5694;
   padding: 8px 15px;
   border-radius: 20px;
   cursor: pointer;
@@ -148,7 +282,7 @@ button.selected {
 }
 
 #history-list li:hover {
-  background-color: #e94560;
+  background-color: #ff5a76;
   transform: scale(1.05);
 }
 
